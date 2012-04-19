@@ -5,6 +5,7 @@
 #
 # @example Generate 10 length token
 #   RToken.rtoken(:size => 10) #=> Random sequence 10 chars
+#   RTolen.rtoken(10) #=> Less verbose fashion
 #
 # @example Generate 16 length token with special chars
 #   RToken.rtoken(:size => 16, :special_chars => '!@#$%%&')
@@ -48,11 +49,13 @@ class RToken
   # @param [Hash] opts options that will be merged to the predefined on initialize
   # @return [String] token
   def rtoken(opts=nil)
+    opts = RToken.check_param(opts)
     RToken.rtoken @options.merge(opts || {})
   end
   
   # Generates a token
   #
+  # @param [Integer] opts Sames as :size => n
   # @param [Hash] opts The options to configure the token generator
   # @param opts [Fixnum] :size The size of token string. Default 8
   # @param opts :uppercase if true all chars will be replaced by uppercase. Default false
@@ -61,6 +64,7 @@ class RToken
   # @param opts [String] :special_chars special chars to be include on token generation, by default include alphanumeric chars
   # @return [String] token
   def self.rtoken(opts=nil)
+    opts = check_param(opts)
     options = DEAFULT_OPTIONS.merge(opts || {})
     size = options[:size] || 8
     # Merge available chars
@@ -79,5 +83,15 @@ class RToken
       token_chars[i] = chars_array[rand(chars_array_size)]
     end
     token_chars.join
+  end
+  
+  private 
+  
+  # @return If param is a Integer then convert it to {:size => param}
+  def self.check_param(param)
+    if param && param.is_a?(Integer)
+      return {:size => param}
+    end
+    param
   end
 end

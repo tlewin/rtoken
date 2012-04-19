@@ -31,8 +31,9 @@ It is possible to create an instance with predefined options
   
   rtkn = RToken.new(:size => 10, :special_chars => '+-*/')
   
-  # All further calls will keep the options
+  # All subsequent calls will keep the same options
   rtkn.rtoken #=> Random 10 length token with special chars
   
   # It is possible to make individual changes
   rtkn.rtoken :size => 4 #=> Random 4 length token with special chars
+  rtkn.rtoken 4 # Less verbose fashion

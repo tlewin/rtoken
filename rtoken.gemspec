@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'rtoken'
   s.platform    = Gem::Platform::RUBY
-  s.version     = '0.0.1'
+  s.version     = '0.1.0'
   s.date        = '2012-03-02'
   s.summary     = "Simple Random Token Generator"
   s.description = "RToken generates random tokens, of any length, for multiple purposes, ex: web urls, data identification, etc."
