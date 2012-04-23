@@ -53,6 +53,12 @@ class RToken
     RToken.rtoken @options.merge(opts || {})
   end
   
+  # Less verbose way to call RToken.rtoken
+  # @see RToken.rtoken
+  def self.[](opts=nil)
+    RToken.rtoken opts
+  end
+  
   # Generates a token
   #
   # @param [Integer] opts Sames as :size => n
