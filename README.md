@@ -2,12 +2,12 @@
 
 Simple Random Token Generator for general purpose.
 
-    ```ruby
-    require 'rtoken'
-        
-    # Generates a random 8 length token with letters and numbers
-    puts RToken.rtoken 
-    ```
+```ruby
+require 'rtoken'
+    
+# Generates a random 8 length token with letters and numbers
+puts RToken.rtoken 
+```
   
 Install the gem:
 
@@ -15,34 +15,34 @@ Install the gem:
   
 ## Examples
 
-    ```ruby
-    require 'rtoken'
-    
-    # Generates a random 16 length token with letters and numbers 
-    # and some special chars
-    RToken.rtoken(:size => 16, :special_chars => '!@#$%')
-    
-    # Generates a random 32 length token with ONLY letters
-    RToken.rtoken(:size => 32, :numeric => false)
-    
-    # Generates a random token with all lowercase chars
-    RToken.rtoken(:size => 32, :numeric => false, :lowercase => true)
-    ```
+```ruby
+require 'rtoken'
+
+# Generates a random 16 length token with letters and numbers 
+# and some special chars
+RToken.rtoken(:size => 16, :special_chars => '!@#$%')
+
+# Generates a random 32 length token with ONLY letters
+RToken.rtoken(:size => 32, :numeric => false)
+
+# Generates a random token with all lowercase chars
+RToken.rtoken(:size => 32, :numeric => false, :lowercase => true)
+```
 
 It is possible to create an instance with predefined options
 
-    ```ruby
-    require 'rtoken'
-    
-    rtkn = RToken.new(:size => 10, :special_chars => '+-*/')
-    
-    # All subsequent calls will keep the same options
-    rtkn.rtoken #=> Random 10 length token with special chars
-    
-    # It is possible to make individual changes
-    rtkn.rtoken :size => 4 #=> Random 4 length token with special chars
-    rtkn.rtoken 4 # Less verbose fashion
-    ```
+```ruby
+require 'rtoken'
+
+rtkn = RToken.new(:size => 10, :special_chars => '+-*/')
+
+# All subsequent calls will keep the same options
+rtkn.rtoken #=> Random 10 length token with special chars
+
+# It is possible to make individual changes
+rtkn.rtoken :size => 4 #=> Random 4 length token with special chars
+rtkn.rtoken 4 # Less verbose fashion
+```
 
 ## Command line
 
