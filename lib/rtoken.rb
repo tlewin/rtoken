@@ -21,12 +21,12 @@ class RToken
 
   NUMERIC_CHARS       = ('0'..'9').to_a.freeze
 
-  DEAFULT_OPTIONS = {
+  DEFAULT_OPTIONS = {
     :size         => 8,
     :uppercase    => false,
     :lowercase    => false,
     :numeric      => true,
-    :special_cars => ''
+    :special_chars => ''
   }.freeze
 
   # Creates an instance of RToken and handle the options for later calls
@@ -71,7 +71,7 @@ class RToken
   # @return [String] token
   def self.rtoken(opts=nil)
     opts = check_param(opts)
-    options = DEAFULT_OPTIONS.merge(opts || {})
+    options = DEFAULT_OPTIONS.merge(opts || {})
     size = options[:size] || 8
     # Merge available chars
     chars_array = options[:numeric] ? Array.new(NUMERIC_CHARS) : [] 
