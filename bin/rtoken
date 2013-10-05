@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+require 'rtoken'
+require 'optparse'
+require 'clipboard'
+
+options = {}
+
+parser  = OptionParser.new do |opts|
+  opts.banner = 'Usage: rtoken [options]'
+
+  opts.on('-s', '--size TOKEN_SIZE', Integer, "token size (default #{RToken::DEFAULT_OPTIONS[:size]})") do |size|
+    options[:size] = size
+  end
+
+  opts.on('-U', '--uppercase', "only uppercase chars (default #{RToken::DEFAULT_OPTIONS[:uppercase]})") do 
+    options[:uppercase] = true
+  end
+
+  opts.on('-l', '--lowercase', "only lowercase chars (default #{RToken::DEFAULT_OPTIONS[:lowercase]})") do 
+    options[:lowercase] = true
+  end
+
+  opts.on('-n', '--[no]-numeric', "allow numeric chars [0-9] (default #{RToken::DEFAULT_OPTIONS[:numeric]})") do |n|
+    options[:numeric] = n
+  end
+
+  opts.on('-p', '--special CHARS', String, 'include special chars') do |chars|
+    options[:special_chars] = chars
+  end
+
+  opts.on('-c', '--clipboard', 'copy token to the clipboard (default false)') do
+    options[:clipboard] = true
+  end
+
+  opts.on_tail('-h', '--help', 'show this message') do
+    puts opts
+    exit
+  end 
+end
+
+parser.parse! ARGV
+
+t = RToken.rtoken(options)
+
+Clipboard.copy t if options[:clipboard]
+puts t 
+
